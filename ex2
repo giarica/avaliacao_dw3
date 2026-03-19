@@ -1,0 +1,22 @@
+'use client'
+
+import { useState } from "react"
+
+export default function Teste(){
+
+    const [ligado, setLigado] = useState(true);
+
+    const mudar = () => {
+        if(ligado == true){
+            setLigado (false)
+        }else{
+            setLigado(true)
+        };
+    }
+
+    return(
+        <button onClick={mudar}>
+            {ligado ? "ligado" : "desligado"}
+        </button>
+    )
+}
