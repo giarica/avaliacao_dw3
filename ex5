@@ -1,0 +1,42 @@
+'use client'
+
+import { useState } from "react"
+
+export default function Teste(){
+
+    const [nome, setNome] = useState("");
+    const [nomes, setNomes] = useState([]);
+
+    const digitar = (e) => {
+        setNome (e.target.value)
+    };
+
+    const adicionar = () => {
+        if(nome == ""){
+            alert("Digite um nome!");
+        }else{
+            setNomes([...nomes, nome]);
+            setNome("");
+        }
+    };
+
+    const remover = (index) => {
+        let novaLista= nomes.filter((_, i) => i !== index);
+        setNomes(novaLista);
+    };
+
+    return(
+        <div>
+        <input value={nome} onChange={digitar}></input>
+        <button onClick={adicionar}>adicionar</button>
+        <ul>
+            {nomes.map((n,i)=> (
+                <li key={i}>
+                    {n}
+                    <button onClick={() => remover(i)}>remover</button>
+                    </li>
+            ))}
+        </ul>
+        </div>
+    )
+}
